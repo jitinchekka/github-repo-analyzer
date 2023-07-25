@@ -20,7 +20,6 @@ os.environ['OPENAI_API_KEY'] =  os.getenv('OPENAI_API_KEY')
 os.environ['GITHUB_TOKEN'] = os.getenv('GITHUB_TOKEN')
 os.environ['ACTIVELOOP_TOKEN'] = os.getenv('ACTIVELOOP_TOKEN')
 
-print(f"OPENAI_API_KEY : {os.getenv('OPENAI_API_KEY')}")
 st.set_page_config(page_title="GitHub Repositories List" , page_icon=":computer:" , layout="wide" , initial_sidebar_state="expanded")
 
 
@@ -29,12 +28,7 @@ st.set_page_config(page_title="GitHub Repositories List" , page_icon=":computer:
 # Function to fetch GitHub repositories
 @st.cache_data # Cache data so that we don't have to fetch it again
 def fetch_github_repos(username):
-    # url = f'https://api.github.com/users/{username}/repos'
-    # response = requests.get(url)
-    # if response.status_code == 200:
-    #     return response.json()
-    # else:
-    #     return None
+
     repos = []
     page = 1
     while True:
