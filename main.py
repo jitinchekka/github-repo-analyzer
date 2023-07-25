@@ -16,7 +16,7 @@ from utils.constants import *
 
 load_dotenv()
 # assign openai api key directly
-os.environ['OPENAI_API_KEY'] =  "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"
+os.environ['OPENAI_API_KEY'] =  os.getenv('OPENAI_API_KEY')
 os.environ['GITHUB_TOKEN'] = os.getenv('GITHUB_TOKEN')
 os.environ['ACTIVELOOP_TOKEN'] = os.getenv('ACTIVELOOP_TOKEN')
 
@@ -217,7 +217,6 @@ def main():
 
     # Submit and clear buttons
     submit_button = st.sidebar.button("Submit")
-    clear_button = st.sidebar.button("Clear")
     st.sidebar.header("About")
     st.sidebar.info("This Python-based tool , when given a GitHub user's URL, returns the most technically complex and challenging repository from that user's profile. The tool will use GPT and LangChain to assess each repository individually before determining the most technically challenging one.")
     st.divider()
@@ -232,12 +231,6 @@ def main():
             st.info("Analysis of the repositories using LangChain and ChatGPT started. Please wait...")
             get_user_repos(username)
             st.error("Invalid username or unable to fetch repositories")
-
-    # Clear the input field
-    if clear_button:
-        username = ""
-        st.experimental_rerun()
-
 
 
 
